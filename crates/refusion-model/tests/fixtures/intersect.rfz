@@ -1,0 +1,195 @@
+{
+  "params": [],
+  "features": [
+    {
+      "id": 1,
+      "name": "Sketch1",
+      "suppressed": false,
+      "kind": {
+        "Sketch": {
+          "plane": "XZ",
+          "sketch": {
+            "x": [
+              0.0,
+              0.0,
+              -71.06836634249836,
+              56.8069467157435,
+              45.13826741193225,
+              56.8069467157435,
+              45.13826741193225,
+              -30.348016119981644,
+              -71.06836634249836,
+              -30.348016119981644,
+              21.19025761777961,
+              1.2554728809024374,
+              44.88766545486154
+            ],
+            "entities": {
+              "0": {
+                "geom": {
+                  "Point": [
+                    0,
+                    1
+                  ]
+                },
+                "construction": false,
+                "projected": true
+              },
+              "1": {
+                "geom": {
+                  "Point": [
+                    2,
+                    3
+                  ]
+                },
+                "construction": false,
+                "projected": false
+              },
+              "2": {
+                "geom": {
+                  "Point": [
+                    4,
+                    5
+                  ]
+                },
+                "construction": false,
+                "projected": false
+              },
+              "3": {
+                "geom": {
+                  "Point": [
+                    6,
+                    7
+                  ]
+                },
+                "construction": false,
+                "projected": false
+              },
+              "4": {
+                "geom": {
+                  "Point": [
+                    8,
+                    9
+                  ]
+                },
+                "construction": false,
+                "projected": false
+              },
+              "5": {
+                "geom": {
+                  "Line": {
+                    "a": 1,
+                    "b": 2
+                  }
+                },
+                "construction": false,
+                "projected": false
+              },
+              "6": {
+                "geom": {
+                  "Line": {
+                    "a": 2,
+                    "b": 3
+                  }
+                },
+                "construction": false,
+                "projected": false
+              },
+              "7": {
+                "geom": {
+                  "Line": {
+                    "a": 3,
+                    "b": 4
+                  }
+                },
+                "construction": false,
+                "projected": false
+              },
+              "8": {
+                "geom": {
+                  "Line": {
+                    "a": 4,
+                    "b": 1
+                  }
+                },
+                "construction": false,
+                "projected": false
+              },
+              "9": {
+                "geom": {
+                  "Point": [
+                    10,
+                    11
+                  ]
+                },
+                "construction": false,
+                "projected": false
+              },
+              "10": {
+                "geom": {
+                  "Circle": {
+                    "c": 9,
+                    "r": 12
+                  }
+                },
+                "construction": false,
+                "projected": false
+              }
+            },
+            "constraints": {
+              "0": {
+                "c": {
+                  "Horizontal": 5
+                },
+                "driven": false,
+                "expr": null,
+                "label": [
+                  0.0,
+                  0.0
+                ]
+              },
+              "1": {
+                "c": {
+                  "Vertical": 6
+                },
+                "driven": false,
+                "expr": null,
+                "label": [
+                  0.0,
+                  0.0
+                ]
+              },
+              "2": {
+                "c": {
+                  "Horizontal": 7
+                },
+                "driven": false,
+                "expr": null,
+                "label": [
+                  0.0,
+                  0.0
+                ]
+              },
+              "3": {
+                "c": {
+                  "Vertical": 8
+                },
+                "driven": false,
+                "expr": null,
+                "label": [
+                  0.0,
+                  0.0
+                ]
+              }
+            },
+            "next_entity": 11,
+            "next_constraint": 4
+          },
+          "projections": []
+        }
+      }
+    }
+  ],
+  "marker": 1,
+  "next_feature": 1
+}

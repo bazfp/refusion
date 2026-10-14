@@ -1,0 +1,12 @@
+/target/
+/dist/
+/third_party/
+*.rfz
+!examples/*.rfz
+!crates/refusion-model/tests/fixtures/*.rfz
+__pycache__/
+*.f3d
+.env
+.env.*
+*.pem
+*.key

@@ -1,0 +1,13 @@
+[package]
+name = "refusion-model"
+description = "Parametric document: parameters, feature timeline, recompute, persistent references"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+refusion-sketch = { path = "../refusion-sketch" }
+refusion-kernel = { path = "../refusion-kernel" }
+refusion-f3d = { path = "../refusion-f3d" }
+serde.workspace = true
+serde_json.workspace = true

@@ -1,0 +1,19 @@
+[package]
+name = "refusion-app"
+description = "refusion: native Linux parametric CAD (wgpu + egui, no Qt)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "refusion"
+path = "src/main.rs"
+
+[dependencies]
+refusion-model = { path = "../refusion-model" }
+eframe = { version = "=0.31.1", default-features = false, features = ["wgpu", "x11", "wayland", "default_fonts"] }
+glam = { version = "0.29", features = ["bytemuck"] }
+bytemuck = { version = "1", features = ["derive"] }
+earcutr = "0.4"
+rfd = "0.15"
+serde_json.workspace = true

@@ -1,0 +1,13 @@
+[package]
+name = "refusion-sketch"
+description = "2D parametric sketching: geometry, constraint solving, degrees of freedom, and profile detection"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+nalgebra.workspace = true
+serde.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true

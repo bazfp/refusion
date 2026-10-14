@@ -1,0 +1,13 @@
+[package]
+name = "refusion-kernel"
+description = "B-rep modelling kernel facade (OpenCASCADE behind a narrow C ABI)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+links = "refusion_occt"
+
+[dependencies]
+thiserror.workspace = true
+
+[build-dependencies]
+cc = "1"

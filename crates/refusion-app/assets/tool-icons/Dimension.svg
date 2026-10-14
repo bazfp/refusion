@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<polyline points="4,4 4,20" fill="none" stroke="#779bb8" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="20,4 20,20" fill="none" stroke="#779bb8" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="12,12 4,12" fill="none" stroke="#1b2b3d" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="12,12 4,12" fill="none" stroke="#f7fafd" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="7,13.7 4,12 7,10.3" fill="#1b2b3d" stroke="#1b2b3d" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="7,13.7 4,12 7,10.3" fill="#f7fafd" stroke="#f7fafd" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="12,12 20,12" fill="none" stroke="#1b2b3d" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="12,12 20,12" fill="none" stroke="#f7fafd" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="17,10.3 20,12 17,13.7" fill="#1b2b3d" stroke="#1b2b3d" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="17,10.3 20,12 17,13.7" fill="#f7fafd" stroke="#f7fafd" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

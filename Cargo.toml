@@ -1,0 +1,23 @@
+[workspace]
+resolver = "2"
+members = ["crates/refusion-sketch", "crates/refusion-kernel", "crates/refusion-f3d", "crates/refusion-model", "crates/refusion-app"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[workspace.dependencies]
+nalgebra = "0.33"
+serde = { version = "1", features = ["derive", "rc"] }
+serde_json = "1"
+thiserror = "2"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+debug = 1

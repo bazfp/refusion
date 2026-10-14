@@ -1,0 +1,10 @@
+[package]
+name = "refusion-f3d"
+description = "Read the B-rep bodies of F3D archives (SAB streams)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+refusion-kernel = { path = "../refusion-kernel" }
+zip = { version = "2.2", default-features = false, features = ["deflate", "zstd"] }

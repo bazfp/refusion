@@ -1,0 +1,14 @@
+# Only public source and build inputs enter the container.
+**
+!Cargo.toml
+!Cargo.lock
+!rust-toolchain.toml
+!Dockerfile
+!LICENSE
+!README.md
+!crates/
+!crates/**
+!scripts/
+!scripts/**
+!examples/
+!examples/*.rfz
