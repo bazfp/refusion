@@ -6,18 +6,18 @@
 
 A native parametric CAD modeller for Linux, built with Rust and OpenCASCADE.
 
-![Version](https://img.shields.io/badge/version-0.1.0-2563eb?style=flat-square)
+![Version](https://img.shields.io/badge/version-0.1.1-2563eb?style=flat-square)
 ![Platform](https://img.shields.io/badge/platform-Linux-334155?style=flat-square)
 ![Rust](https://img.shields.io/badge/Rust-1.99-f97316?style=flat-square)
 [![License: MIT](https://img.shields.io/badge/license-MIT-059669?style=flat-square)](LICENSE)
 
-[Download v0.1.0](https://github.com/bazfp/refusion/releases/tag/v0.1.0) · [Features](#from-sketch-to-solid) · [Controls](#make-your-first-part) · [Build from source](#build-from-source)
+[Download v0.1.1](https://github.com/bazfp/refusion/releases/tag/v0.1.1) · [Features](#from-sketch-to-solid) · [Controls](#make-your-first-part) · [Build from source](#build-from-source)
 
 </div>
 
 refusion brings constrained sketches, solid modelling, and an editable feature timeline into one GPU-rendered desktop workspace. Give a dimension a name, use it in an expression, and change it later to recompute the model.
 
-**v0.1.0 is an early release.** It is ready for exploration and feedback; save copies of important designs. The current target is Linux x86-64 with a working Vulkan or OpenGL driver, on X11 or Wayland.
+**v0.1.1 is an early release.** It is ready for exploration and feedback; save copies of important designs. The current target is Linux x86-64 with a working Vulkan or OpenGL driver, on X11 or Wayland.
 
 ## From sketch to solid
 

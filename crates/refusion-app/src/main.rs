@@ -14,6 +14,7 @@ mod measure;
 mod mesh_lod;
 mod perf;
 mod scene;
+mod shell_worker;
 mod sketch_derived;
 mod sketch_mode;
 mod tool_icons;
@@ -23,6 +24,12 @@ use eframe::egui_wgpu::{WgpuConfiguration, WgpuSetup, WgpuSetupCreateNew};
 use eframe::wgpu;
 
 fn main() -> eframe::Result {
+    if std::env::args_os().nth(1).as_deref() == Some(std::ffi::OsStr::new(shell_worker::ARG)) {
+        shell_worker::entry();
+        return Ok(());
+    }
+    refusion_model::kernel::set_shell_executor(shell_worker::shell)
+        .expect("install Shell process isolation before starting workers");
     let open = std::env::args().nth(1).map(std::path::PathBuf::from);
     let wgpu_setup = WgpuSetup::CreateNew(WgpuSetupCreateNew {
         // Prefer Vulkan and the discrete GPU.

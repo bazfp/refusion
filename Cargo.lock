@@ -2443,7 +2443,7 @@ dependencies = [
 
 [[package]]
 name = "refusion-app"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "bytemuck",
  "earcutr",
@@ -2451,12 +2451,14 @@ dependencies = [
  "glam",
  "refusion-model",
  "rfd",
+ "serde",
  "serde_json",
+ "tempfile",
 ]
 
 [[package]]
 name = "refusion-f3d"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "refusion-kernel",
  "zip",
@@ -2464,7 +2466,7 @@ dependencies = [
 
 [[package]]
 name = "refusion-kernel"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cc",
  "thiserror 2.0.21",
@@ -2472,7 +2474,7 @@ dependencies = [
 
 [[package]]
 name = "refusion-model"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "refusion-f3d",
  "refusion-kernel",
@@ -2483,7 +2485,7 @@ dependencies = [
 
 [[package]]
 name = "refusion-sketch"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "nalgebra",
  "serde",

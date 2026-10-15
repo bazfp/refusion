@@ -17,3 +17,5 @@ bytemuck = { version = "1", features = ["derive"] }
 earcutr = "0.4"
 rfd = "0.15"
 serde_json.workspace = true
+serde.workspace = true
+tempfile = "3"

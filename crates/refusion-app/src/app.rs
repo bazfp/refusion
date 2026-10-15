@@ -7390,6 +7390,54 @@ mod hole_shell_command_tests {
 #[cfg(test)]
 mod cad_ribbon_tests {
     use super::*;
+    #[test]
+    #[ignore = "requires REFUSION_TEST_EXECUTABLE and REFUSION_TEST_DESIGN for native crash reproduction"]
+    fn clicking_shell_preserves_the_live_design_after_a_native_offset_failure() {
+        let executable = std::env::var_os("REFUSION_TEST_EXECUTABLE").expect("release executable");
+        assert!(std::path::Path::new(&executable).is_file());
+        kernel::set_shell_executor(|shape, faces, thickness, feature, round| {
+            crate::shell_worker::shell_at(
+                std::path::Path::new(&std::env::var_os("REFUSION_TEST_EXECUTABLE").unwrap()),
+                shape,
+                faces,
+                thickness,
+                feature,
+                round,
+            )
+        })
+        .unwrap();
+        let design = std::env::var_os("REFUSION_TEST_DESIGN").expect("reproduction design");
+        let mut app = new_app();
+        app.doc = Document::from_json(&std::fs::read_to_string(design).unwrap()).unwrap();
+        assert!(app.doc.errors.is_empty());
+        let original = app.doc.to_json();
+        let output = open(&mut app, "MODIFY");
+        click(&mut app, at(&output, "Shell"));
+        assert!(matches!(
+            app.cmd,
+            Command::Solid {
+                kind: FeatureKind::Shell(_),
+                ..
+            }
+        ));
+        let start = Instant::now();
+        while app.preview_pending {
+            assert!(start.elapsed() < Duration::from_secs(65));
+            app.poll_compute();
+            std::thread::sleep(Duration::from_millis(5));
+        }
+        assert!(
+            app.preview_error.is_some(),
+            "expected a recoverable offset error"
+        );
+        assert_eq!(app.doc.to_json(), original);
+        app.commit_command();
+        assert_eq!(app.doc.to_json(), original);
+        app.cancel_command();
+        app.run_action(Action::NewSketch);
+        assert!(matches!(app.cmd, Command::NewSketch));
+    }
+
     fn new_app() -> RefusionApp {
         RefusionApp::empty(egui::Context::default(), None, String::new())
     }

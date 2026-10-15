@@ -670,7 +670,7 @@ extern "C" RfShape* rf_transform(RfShape* s, int kind, const double* origin, con
     RF_CATCH(nullptr)
 }
 
-extern "C" RfShape* rf_shell(RfShape* s, const int* ids, int n, double thickness, uint64_t feat) {
+extern "C" RfShape* rf_shell(RfShape* s, const int* ids, int n, double thickness, uint64_t feat, int round_join) {
     RF_TRY
     s->index();
     TopTools_ListOfShape removed;
@@ -679,8 +679,8 @@ extern "C" RfShape* rf_shell(RfShape* s, const int* ids, int n, double thickness
         removed.Append(s->faces(ids[i]));
     }
     BRepOffsetAPI_MakeThickSolid mk;
-    mk.MakeThickSolidByJoin(s->s, removed, thickness, 1e-6, BRepOffset_Skin, false, false, GeomAbs_Intersection);
-    if (!mk.IsDone() || !BRepCheck_Analyzer(mk.Shape()).IsValid()) { g_err = "shell failed (thickness may exceed available space)"; return nullptr; }
+    mk.MakeThickSolidByJoin(s->s, removed, thickness, 1e-6, BRepOffset_Skin, false, false, round_join ? GeomAbs_Arc : GeomAbs_Intersection);
+    if (!mk.IsDone() || mk.Shape().IsNull() || !BRepCheck_Analyzer(mk.Shape()).IsValid()) { g_err = "shell failed (thickness may exceed available space)"; return nullptr; }
     TagMap m = carry(s, mk);
     for (int i=1; i<=s->faces.Extent(); ++i) {
         auto tag = i-1 < (int)s->ftags.size() ? s->ftags[i-1] : 0;

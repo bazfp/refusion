@@ -7,6 +7,17 @@ use std::sync::{
 };
 static MESH_KEY: AtomicU64 = AtomicU64::new(1);
 
+type ShellExecutor = fn(&Shape, &[u32], f64, u64, bool) -> Result<Shape>;
+static SHELL_EXECUTOR: OnceLock<ShellExecutor> = OnceLock::new();
+
+/// Install process isolation before starting application workers. Standalone
+/// kernel clients can use the native implementation without an executor.
+pub fn set_shell_executor(executor: ShellExecutor) -> Result<()> {
+    SHELL_EXECUTOR
+        .set(executor)
+        .map_err(|_| KernelError("Shell executor is already installed".into()))
+}
+
 #[repr(C)]
 pub(crate) struct RawShape {
     _p: [u8; 0],
@@ -115,6 +126,7 @@ extern "C" {
         n: c_int,
         thickness: f64,
         feat: u64,
+        round_join: c_int,
     ) -> *mut RawShape;
     fn rf_mesh_counts(m: *const RawMesh, out: *mut u32) -> c_int;
     fn rf_mesh_copy(
@@ -460,10 +472,25 @@ impl Shape {
         })
     }
     pub fn shell(&self, faces: &[u32], signed_thickness: f64, feature: u64) -> Result<Shape> {
+        self.shell_with_join(faces, signed_thickness, feature, false)
+    }
+
+    /// Round joins provide an alternative when intersecting offset surfaces
+    /// cannot be constructed. Desktop callers execute either mode out of process.
+    pub fn shell_with_join(
+        &self,
+        faces: &[u32],
+        signed_thickness: f64,
+        feature: u64,
+        round_join: bool,
+    ) -> Result<Shape> {
         if !signed_thickness.is_finite() || signed_thickness.abs() < 1e-9 {
             return Err(KernelError(
                 "shell thickness must be nonzero and finite".into(),
             ));
+        }
+        if let Some(executor) = SHELL_EXECUTOR.get() {
+            return executor(self, faces, signed_thickness, feature, round_join);
         }
         let ids: Vec<c_int> = faces.iter().map(|&f| f as c_int).collect();
         let isolated = self.translated([0.0; 3], 0)?;
@@ -474,6 +501,7 @@ impl Shape {
                 ids.len() as c_int,
                 signed_thickness,
                 feature,
+                c_int::from(round_join),
             )
         })
     }
